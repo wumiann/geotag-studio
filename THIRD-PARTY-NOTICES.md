@@ -15,19 +15,15 @@ GeoTag Studio 自身的代码以 [GNU GPL v3](LICENSE) 发布。可执行程序�
 
 ### Strawberry Perl 运行库
 
-`exiftool_files` 文件夹里的 `perl.exe`、`perl532.dll` 等文件来自 Strawberry Perl，是 ExifTool 官方 Windows 压缩包自带的。
+`exiftool_files` 文件夹里的 `perl.exe`、`perl532.dll` 等文件来自 Strawberry Perl，是 ExifTool 官方 Windows 压缩包自带的。同一个压缩包还带了 Perl 运行时需要的三个支持库：`libgcc_s_seh-1.dll`、`libstdc++-6.dll`、`libwinpthread-1.dll`。
 
 - 主页：<http://strawberryperl.com/>
 - 许可证：GNU General Public License 或 Artistic License
-- 其中各个开源库的许可证全文见 `exiftool_files\Licenses_Strawberry_Perl.zip`
+- 其中各个开源库（包括上述三个支持库）的许可证全文见 `exiftool_files\Licenses_Strawberry_Perl.zip`
 
-### Microsoft Visual C++ 运行库
+### 关于 Microsoft Visual C++ 运行库
 
-`vcruntime140.dll`、`vcruntime140_1.dll`、`vcruntime140_threads.dll`、`msvcp140.dll`、`msvcp140_1.dll`、`msvcp140_2.dll`、`msvcp140_atomic_wait.dll`、`msvcp140_codecvt_ids.dll`、`concrt140.dll`、`vccorlib140.dll`
-
-- 版权：Copyright Microsoft Corporation
-- 来源：Microsoft Visual C++ 2015-2022 Redistributable（x64）v14.44.35211，文件版本 14.44.35211.0
-- 分发方式：依据 Microsoft 的许可条款，这些文件属于允许随程序分发的“可分发代码”（Distributable Code），这里原样分发，没有做任何修改
+压缩包里没有带 `vcruntime140.dll`、`msvcp140.dll` 这类文件。`GeoTagStudio.exe` 加载的 DLL 全部是 Windows 10 和 Windows 11 自带的组件，不依赖 Microsoft Visual C++ 运行库。
 
 ## 链接进程序的组件
 

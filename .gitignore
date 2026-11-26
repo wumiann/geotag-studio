@@ -3,7 +3,7 @@ node_modules/
 dist/
 .pnpm-store/
 
-# 本地的绿色版目录：程序、ExifTool 运行库，以及含有个人地图 Key 和处理记录的 green-release\data
+# 本地的绿色版目录：程序、ExifTool，以及含有个人地图 Key 和处理记录的 green-release\data
 green-release/
 
 # 打包输出

@@ -46,7 +46,7 @@ RAW 和照片的写入由 [ExifTool](https://exiftool.org/) 完成，压缩包�
 
 - 适用于 64 位的 Windows 10 和 Windows 11。地图需要联网。
 - 不要在压缩包里直接运行，也不要放进 `C:\Program Files` 这类受保护的目录：程序需要在旁边生成 `data` 文件夹。
-- 压缩包里已经带了 ExifTool 和运行库，不需要再安装别的东西。
+- 压缩包里已经带了 ExifTool，不需要再安装别的东西。
 - 程序依赖 WebView2 运行时，Windows 11 和保持更新的 Windows 10 都自带。如果启动时提示缺少它，到[微软官网](https://developer.microsoft.com/microsoft-edge/webview2/)下载“Evergreen 独立安装程序”装上即可。
 
 ## 三步上手
@@ -129,13 +129,13 @@ pnpm build
 cargo +stable-x86_64-pc-windows-msvc build --manifest-path src-tauri/Cargo.toml --release --features tauri/custom-protocol
 ```
 
-编译出来的程序还要和 ExifTool、VC++ 运行库放在一起才能使用，完整步骤见[发布指南](docs/发布指南.md)。
+编译出来的程序还要和 ExifTool 放在一起才能使用，完整步骤见[发布指南](docs/发布指南.md)。
 
 ## 许可证
 
 本项目的代码以 [GNU General Public License v3](LICENSE) 发布。
 
-可执行程序压缩包里还带有 ExifTool、Strawberry Perl 运行库和 Microsoft Visual C++ 运行库等第三方组件，它们各自遵循自己的许可证，详见[第三方组件声明](THIRD-PARTY-NOTICES.md)。
+可执行程序压缩包里还带有 ExifTool 和它依赖的 Strawberry Perl 运行库等第三方组件，它们各自遵循自己的许可证，详见[第三方组件声明](THIRD-PARTY-NOTICES.md)。
 
 ## 更多文档
 

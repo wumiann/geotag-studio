@@ -1,8 +1,11 @@
 # Builds the portable release zip from the local green-release folder.
 #
-#   - copies GeoTagStudio.exe, the VC++ runtime DLLs, exiftool.exe and exiftool_files
+#   - copies GeoTagStudio.exe, exiftool.exe and exiftool_files
 #   - never copies green-release\data (it holds the owner's map key and processing history)
 #   - adds README.txt, LICENSE.txt and THIRD-PARTY-NOTICES.txt next to the program
+#
+# The program does not depend on the Microsoft Visual C++ runtime: every DLL it loads is a Windows
+# component. So no vcruntime140.dll, msvcp140.dll and the like belong in the package.
 #
 # Usage:
 #   powershell -ExecutionPolicy Bypass -File scripts\package-release.ps1 [-Version 0.1.0]
@@ -30,8 +33,7 @@ if ($Version -notmatch '^\d+\.\d+\.\d+([-+][0-9A-Za-z.-]+)?$') {
 
 # 1. everything the portable build needs must be present
 $required = @(
-    'GeoTagStudio.exe', 'exiftool.exe',
-    'vcruntime140.dll', 'msvcp140.dll', 'concrt140.dll'
+    'GeoTagStudio.exe', 'exiftool.exe'
 )
 foreach ($name in $required) {
     if (-not (Test-Path (Join-Path $source $name))) {
@@ -42,6 +44,12 @@ if (-not (Test-Path (Join-Path $source 'exiftool_files\perl*.dll'))) {
     throw "exiftool_files is incomplete: no perl*.dll inside it. Copy the whole folder from the official ExifTool Windows package."
 }
 
+# VC++ runtime DLLs next to the program are not needed and are not packaged; say so if they turn up
+$stray = @(Get-ChildItem $source -File | Where-Object { $_.Name -match '^(vcruntime|msvcp|concrt|vccorlib)140.*\.dll$' })
+if ($stray.Count -gt 0) {
+    Write-Warning ("VC++ runtime DLLs sit in {0} ({1}). The program does not need them, so they are left out of the package. See the release guide in docs." -f $source, ($stray.Name -join ', '))
+}
+
 # 2. stage the files in a folder named after the package
 $folderName = "GeoTagStudio-$Version-win-x64"
 $holding = Join-Path $env:TEMP ("GeoTagStudio-package-" + [guid]::NewGuid().ToString('N'))
@@ -49,12 +57,13 @@ $stage = Join-Path $holding $folderName
 New-Item -ItemType Directory -Path $stage | Out-Null
 
 try {
-    Copy-Item (Join-Path $source '*.dll') $stage
     Copy-Item (Join-Path $source 'exiftool.exe') $stage
     Copy-Item (Join-Path $source 'exiftool_files') $stage -Recurse
     Copy-Item (Join-Path $source 'GeoTagStudio.exe') $stage
 
-    # Notepad on older Windows 10 needs the byte order mark to read UTF-8 Chinese text.
+    # Notepad on older Windows 10 needs the byte order mark to read UTF-8 Chinese text, and shows
+    # LF-only files as one long line.  So: byte order mark, and Windows line endings whatever the
+    # checkout happened to produce.
     $utf8WithBom = New-Object System.Text.UTF8Encoding($true)
     $documents = @(
         @('packaging\README.txt', 'README.txt'),
@@ -63,6 +72,7 @@ try {
     )
     foreach ($pair in $documents) {
         $text = [System.IO.File]::ReadAllText((Join-Path $root $pair[0]), [System.Text.Encoding]::UTF8)
+        $text = $text -replace "`r?`n", "`r`n"
         [System.IO.File]::WriteAllText((Join-Path $stage $pair[1]), $text, $utf8WithBom)
     }
 

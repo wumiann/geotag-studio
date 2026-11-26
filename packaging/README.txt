@@ -11,7 +11,7 @@ GeoTag Studio 使用说明
 2. 双击 GeoTagStudio.exe。
 
 适用于 64 位的 Windows 10 / Windows 11，需要联网加载地图。
-压缩包里已经自带 ExifTool 和运行库，不需要再安装别的软件。
+压缩包里已经自带 ExifTool，不需要再安装别的软件。
 首次运行会在同目录生成 data 文件夹，用来保存你的设置和处理记录。
 
 
@@ -77,5 +77,5 @@ Key 只保存在你电脑上的 data 文件夹里，不会随程序分发给任�
 六、许可
 --------
 本程序以 GNU GPL v3 发布，全文见 LICENSE.txt。
-包内第三方组件（ExifTool、Strawberry Perl 运行库、Microsoft VC++ 运行库等）
-的声明见 THIRD-PARTY-NOTICES.txt。请保持 exiftool_files 文件夹完整，不要删改。
+包内第三方组件（ExifTool、Strawberry Perl 运行库等）的声明见 THIRD-PARTY-NOTICES.txt。
+请保持 exiftool_files 文件夹完整，不要删改。
