@@ -1,6 +1,6 @@
 [package]
 name = "photo-gps-manager"
-version = "0.1.0"
+version = "0.1.1"
 description = "GeoTag Studio: batch geotag photos, RAW files and videos on Windows"
 authors = ["wumiann"]
 license = "GPL-3.0-only"

@@ -1,6 +1,6 @@
 {
   "name": "photo-gps-manager",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "GeoTag Studio: batch geotag photos, RAW files and videos on Windows",
   "license": "GPL-3.0-only",
