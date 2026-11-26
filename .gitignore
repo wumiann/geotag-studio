@@ -1,0 +1,18 @@
+# 依赖和构建产物
+node_modules/
+dist/
+.pnpm-store/
+
+# 本地的绿色版目录：程序、ExifTool 运行库，以及含有个人地图 Key 和处理记录的 green-release\data
+green-release/
+
+# 打包输出
+release/
+
+# 本地测试素材
+testpic/
+
+# 本机维护留下的文件
+.acl-recovery/
+*.bak
+*.log

@@ -1,0 +1,549 @@
+<div id="photo-gps-mockup" class="viz-carousel" aria-label="照片 GPS 标注软件界面方案" data-previous-label="上一个方案" data-next-label="下一个方案">
+  <section data-variant="地图工作台" aria-label="地图工作台方案">
+    <style>
+      #photo-gps-mockup [data-product="geotag"] {
+        --gt-bg: light-dark(#f4f6f8, #15181c);
+        --gt-window: light-dark(#ffffff, #1e2329);
+        --gt-panel: light-dark(#f8fafb, #242a31);
+        --gt-panel-strong: light-dark(#eef2f5, #2a3139);
+        --gt-text: light-dark(#19222d, #edf2f7);
+        --gt-muted: light-dark(#687786, #9eabb8);
+        --gt-line: light-dark(#dbe2e8, #39424c);
+        --gt-blue: light-dark(#1e6fe8, #67a4ff);
+        --gt-blue-soft: light-dark(#e9f1ff, #203b60);
+        --gt-green: light-dark(#18875b, #55c497);
+        --gt-orange: light-dark(#c46b1d, #f3a45c);
+        --gt-shadow: light-dark(0 20px 60px rgba(26, 45, 67, .16), 0 20px 60px rgba(0, 0, 0, .45));
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+        color: var(--gt-text);
+        background: var(--gt-bg);
+        border: 1px solid var(--gt-line);
+        border-radius: 18px;
+        box-shadow: var(--gt-shadow);
+        overflow: hidden;
+        min-height: 650px;
+      }
+
+      #photo-gps-mockup .gt-titlebar {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 14px 0 18px;
+        background: var(--gt-window);
+        border-bottom: 1px solid var(--gt-line);
+        font-size: 12px;
+      }
+
+      #photo-gps-mockup .gt-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        letter-spacing: .01em;
+      }
+
+      #photo-gps-mockup .gt-brand-mark {
+        width: 20px;
+        height: 20px;
+        display: grid;
+        place-items: center;
+        border-radius: 6px;
+        background: var(--gt-blue);
+        color: #fff;
+      }
+
+      #photo-gps-mockup .gt-title-actions {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--gt-muted);
+      }
+
+      #photo-gps-mockup .gt-window-btn,
+      #photo-gps-mockup .gt-icon-btn,
+      #photo-gps-mockup .gt-rail-btn,
+      #photo-gps-mockup .gt-tool-btn,
+      #photo-gps-mockup .gt-map-btn {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+      }
+
+      #photo-gps-mockup .gt-window-btn {
+        width: 28px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border-radius: 6px;
+      }
+
+      #photo-gps-mockup .gt-window-btn:hover,
+      #photo-gps-mockup .gt-icon-btn:hover,
+      #photo-gps-mockup .gt-map-btn:hover,
+      #photo-gps-mockup .gt-tool-btn:hover {
+        background: var(--gt-panel-strong);
+      }
+
+      #photo-gps-mockup .gt-app {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 610px;
+      }
+
+      #photo-gps-mockup .gt-rail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 8px;
+        background: var(--gt-window);
+        border-right: 1px solid var(--gt-line);
+      }
+
+      #photo-gps-mockup .gt-rail-spacer { flex: 1; }
+
+      #photo-gps-mockup .gt-rail-btn {
+        width: 56px;
+        min-height: 52px;
+        display: grid;
+        place-items: center;
+        gap: 3px;
+        padding: 7px 4px;
+        border-radius: 10px;
+        color: var(--gt-muted);
+        font: inherit;
+        font-size: 11px;
+      }
+
+      #photo-gps-mockup .gt-rail-btn span { line-height: 1; }
+      #photo-gps-mockup .gt-rail-btn.is-active { color: var(--gt-blue); background: var(--gt-blue-soft); }
+
+      #photo-gps-mockup .gt-content {
+        min-width: 0;
+        display: grid;
+        grid-template-rows: 62px minmax(0, 1fr) 62px;
+        background: var(--gt-bg);
+      }
+
+      #photo-gps-mockup .gt-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 0 18px;
+        background: var(--gt-window);
+        border-bottom: 1px solid var(--gt-line);
+      }
+
+      #photo-gps-mockup .gt-project-title { display: grid; gap: 3px; }
+      #photo-gps-mockup .gt-project-title strong { font-size: 16px; font-weight: 600; }
+      #photo-gps-mockup .gt-project-title small { color: var(--gt-muted); font-size: 12px; }
+
+      #photo-gps-mockup .gt-header-actions { display: flex; align-items: center; gap: 8px; }
+      #photo-gps-mockup .gt-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 9px;
+        border-radius: 999px;
+        background: var(--gt-panel);
+        color: var(--gt-muted);
+        font-size: 12px;
+      }
+      #photo-gps-mockup .gt-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gt-orange); }
+
+      #photo-gps-mockup .gt-main {
+        display: grid;
+        grid-template-columns: minmax(290px, 34%) minmax(0, 1fr);
+        min-height: 0;
+      }
+
+      #photo-gps-mockup .gt-files {
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+        min-width: 0;
+        background: var(--gt-window);
+        border-right: 1px solid var(--gt-line);
+      }
+
+      #photo-gps-mockup .gt-files-head { padding: 16px 16px 10px; display: grid; gap: 12px; }
+      #photo-gps-mockup .gt-section-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+      #photo-gps-mockup .gt-section-title strong { font-size: 13px; font-weight: 600; }
+      #photo-gps-mockup .gt-section-title small { color: var(--gt-muted); font-size: 11px; }
+
+      #photo-gps-mockup .gt-import-btn,
+      #photo-gps-mockup .gt-primary-btn,
+      #photo-gps-mockup .gt-secondary-btn {
+        appearance: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border-radius: 8px;
+        padding: 9px 12px;
+        font: inherit;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      #photo-gps-mockup .gt-import-btn,
+      #photo-gps-mockup .gt-secondary-btn { color: var(--gt-text); background: var(--gt-panel); border: 1px solid var(--gt-line); }
+      #photo-gps-mockup .gt-primary-btn { color: #fff; background: var(--gt-blue); border: 1px solid var(--gt-blue); }
+      #photo-gps-mockup .gt-import-btn { width: 100%; }
+      #photo-gps-mockup .gt-import-btn:hover,
+      #photo-gps-mockup .gt-secondary-btn:hover { background: var(--gt-panel-strong); }
+      #photo-gps-mockup .gt-primary-btn:hover { filter: brightness(1.06); }
+
+      #photo-gps-mockup .gt-filter-row { display: flex; align-items: center; justify-content: space-between; padding: 0 16px 9px; color: var(--gt-muted); font-size: 11px; }
+      #photo-gps-mockup .gt-filter-row select { color: var(--gt-text); background: var(--gt-panel); border: 1px solid var(--gt-line); border-radius: 6px; padding: 5px 8px; font: inherit; }
+
+      #photo-gps-mockup .gt-file-list { min-height: 0; overflow: auto; padding: 0 8px 8px; }
+      #photo-gps-mockup .gt-file-row {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 18px 44px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 9px;
+        padding: 8px;
+        border: 0;
+        border-radius: 9px;
+        background: transparent;
+        color: var(--gt-text);
+        text-align: left;
+        cursor: pointer;
+        font: inherit;
+      }
+      #photo-gps-mockup .gt-file-row:hover { background: var(--gt-panel); }
+      #photo-gps-mockup .gt-file-row.is-selected { background: var(--gt-blue-soft); }
+      #photo-gps-mockup .gt-file-row input { accent-color: var(--gt-blue); }
+      #photo-gps-mockup .gt-thumb { width: 44px; height: 38px; border-radius: 6px; background: linear-gradient(145deg, #ced9e7 0 42%, #8fc6ac 43% 67%, #6d9bca 68%); position: relative; overflow: hidden; }
+      #photo-gps-mockup .gt-thumb::after { content: ""; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,.75); top: 6px; left: 6px; box-shadow: 17px 13px 0 -2px rgba(255,255,255,.42); }
+      #photo-gps-mockup .gt-file-text { min-width: 0; display: grid; gap: 3px; }
+      #photo-gps-mockup .gt-file-text strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 500; }
+      #photo-gps-mockup .gt-file-text small { color: var(--gt-muted); font-size: 11px; }
+      #photo-gps-mockup .gt-file-kind { color: var(--gt-muted); font-size: 10px; }
+      #photo-gps-mockup .gt-files-foot { padding: 10px 16px 14px; border-top: 1px solid var(--gt-line); color: var(--gt-muted); font-size: 11px; display: flex; justify-content: space-between; }
+
+      #photo-gps-mockup .gt-map-pane { position: relative; min-width: 0; overflow: hidden; background: #dfe8e4; }
+      #photo-gps-mockup .gt-map {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(160deg, transparent 0 28%, rgba(255,255,255,.65) 28.2% 29%, transparent 29.2% 100%),
+          linear-gradient(25deg, transparent 0 38%, rgba(255,255,255,.72) 38.2% 39%, transparent 39.2% 100%),
+          linear-gradient(88deg, transparent 0 62%, rgba(255,255,255,.62) 62.2% 63%, transparent 63.2% 100%),
+          radial-gradient(circle at 30% 28%, rgba(121,174,134,.45) 0 15%, transparent 15.5%),
+          radial-gradient(circle at 77% 66%, rgba(121,174,134,.38) 0 18%, transparent 18.5%),
+          linear-gradient(135deg, #d5e2dc, #eef3ec 55%, #cbded5);
+      }
+      #photo-gps-mockup .gt-map::before,
+      #photo-gps-mockup .gt-map::after { content: ""; position: absolute; border: 4px solid rgba(190, 139, 78, .55); border-left-color: transparent; border-right-color: transparent; border-radius: 50%; transform: rotate(-18deg); }
+      #photo-gps-mockup .gt-map::before { width: 120%; height: 30%; top: 25%; left: -10%; }
+      #photo-gps-mockup .gt-map::after { width: 130%; height: 22%; top: 62%; left: -15%; transform: rotate(22deg); }
+      #photo-gps-mockup .gt-road { position: absolute; height: 3px; background: rgba(255,255,255,.76); transform-origin: left center; box-shadow: 0 0 0 1px rgba(156,165,163,.2); }
+      #photo-gps-mockup .gt-road.r1 { width: 80%; top: 20%; left: 8%; transform: rotate(18deg); }
+      #photo-gps-mockup .gt-road.r2 { width: 70%; top: 55%; left: 16%; transform: rotate(-14deg); }
+      #photo-gps-mockup .gt-road.r3 { width: 55%; top: 78%; left: 32%; transform: rotate(-42deg); }
+      #photo-gps-mockup .gt-road.r4 { width: 55%; top: 33%; left: 42%; transform: rotate(74deg); }
+      #photo-gps-mockup .gt-place { position: absolute; color: rgba(42,73,68,.72); font-size: 11px; letter-spacing: .02em; }
+      #photo-gps-mockup .gt-place.p1 { top: 27%; left: 22%; }
+      #photo-gps-mockup .gt-place.p2 { top: 59%; left: 67%; }
+      #photo-gps-mockup .gt-place.p3 { top: 72%; left: 19%; }
+      #photo-gps-mockup .gt-map-toolbar { position: absolute; top: 14px; left: 16px; right: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      #photo-gps-mockup .gt-map-search { width: min(330px, 48%); display: flex; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid rgba(112,133,129,.35); border-radius: 9px; background: rgba(255,255,255,.9); color: #45605b; box-shadow: 0 6px 18px rgba(38,66,64,.12); }
+      #photo-gps-mockup .gt-map-search input { border: 0; outline: 0; min-width: 0; width: 100%; background: transparent; color: #243f3c; font: inherit; font-size: 12px; }
+      #photo-gps-mockup .gt-map-tools { display: flex; gap: 6px; }
+      #photo-gps-mockup .gt-map-btn { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 8px; background: rgba(255,255,255,.9); color: #45605b; box-shadow: 0 6px 18px rgba(38,66,64,.12); }
+      #photo-gps-mockup .gt-map-btn.is-on { color: #1d6e68; background: #e3f1ed; }
+      #photo-gps-mockup .gt-marker { position: absolute; left: 58%; top: 48%; width: 25px; height: 25px; border-radius: 50% 50% 50% 0; background: #e85e52; border: 3px solid #fff; transform: rotate(-45deg); box-shadow: 0 5px 12px rgba(113,38,34,.24); cursor: grab; }
+      #photo-gps-mockup .gt-marker::after { content: ""; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #fff; top: 6px; left: 6px; }
+      #photo-gps-mockup .gt-coordinate-card { position: absolute; left: 16px; right: 16px; bottom: 16px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 16px; padding: 14px 16px; border: 1px solid rgba(112,133,129,.34); border-radius: 12px; background: rgba(255,255,255,.94); box-shadow: 0 12px 24px rgba(38,66,64,.14); color: #263c3a; }
+      #photo-gps-mockup .gt-coordinate-card strong { font-size: 12px; font-weight: 600; }
+      #photo-gps-mockup .gt-coord-values { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 7px; font-family: "Cascadia Mono", Consolas, monospace; font-size: 12px; }
+      #photo-gps-mockup .gt-coord-values span { white-space: nowrap; }
+      #photo-gps-mockup .gt-coordinate-side { text-align: right; display: grid; gap: 5px; color: #617572; font-size: 11px; }
+      #photo-gps-mockup .gt-coordinate-side b { color: #1d6e68; font-weight: 600; }
+      #photo-gps-mockup .gt-legend { position: absolute; top: 68px; left: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 8px; background: rgba(255,255,255,.84); color: #55716b; font-size: 10px; box-shadow: 0 5px 14px rgba(38,66,64,.1); }
+      #photo-gps-mockup .gt-legend i { width: 8px; height: 8px; border-radius: 50%; background: #e85e52; }
+       #photo-gps-mockup .gt-crs-panel { position: absolute; top: 108px; left: 16px; display: grid; gap: 6px; padding: 10px 11px; border: 1px solid rgba(112,133,129,.28); border-radius: 9px; background: rgba(255,255,255,.92); color: #45605b; box-shadow: 0 5px 14px rgba(38,66,64,.1); font-size: 10px; }
+       #photo-gps-mockup .gt-crs-panel label { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+       #photo-gps-mockup .gt-crs-panel select { color: #263c3a; background: #f4f8f6; border: 1px solid #cbdad5; border-radius: 6px; padding: 4px 6px; font: inherit; }
+       #photo-gps-mockup .gt-crs-help { color: #6d817d; line-height: 1.35; max-width: 210px; }
+
+      #photo-gps-mockup .gt-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 18px; background: var(--gt-window); border-top: 1px solid var(--gt-line); }
+      #photo-gps-mockup .gt-footer-note { color: var(--gt-muted); font-size: 11px; }
+      #photo-gps-mockup .gt-footer-actions { display: flex; gap: 8px; }
+
+      #photo-gps-mockup .gt-toast { position: absolute; left: 50%; bottom: 76px; transform: translateX(-50%); padding: 9px 13px; border-radius: 999px; background: #1f2a35; color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+      #photo-gps-mockup .gt-toast.is-visible { opacity: 1; }
+
+      @media (max-width: 840px) {
+        #photo-gps-mockup .gt-main { grid-template-columns: 1fr; grid-template-rows: 250px minmax(360px, 1fr); }
+        #photo-gps-mockup .gt-files { border-right: 0; border-bottom: 1px solid var(--gt-line); }
+        #photo-gps-mockup .gt-file-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        #photo-gps-mockup .gt-map-pane { min-height: 360px; }
+      }
+      @media (max-width: 560px) {
+        #photo-gps-mockup .gt-app { grid-template-columns: 58px 1fr; }
+        #photo-gps-mockup .gt-rail-btn { width: 44px; }
+        #photo-gps-mockup .gt-header { padding: 0 11px; }
+        #photo-gps-mockup .gt-status { display: none; }
+        #photo-gps-mockup .gt-file-list { grid-template-columns: 1fr; }
+        #photo-gps-mockup .gt-footer { padding: 0 11px; }
+        #photo-gps-mockup .gt-footer-note { display: none; }
+        #photo-gps-mockup .gt-footer-actions { width: 100%; }
+        #photo-gps-mockup .gt-footer-actions button { flex: 1; }
+        #photo-gps-mockup .gt-coordinate-card { grid-template-columns: 1fr; gap: 8px; }
+        #photo-gps-mockup .gt-coordinate-side { text-align: left; }
+      }
+    </style>
+
+    <div data-product="geotag">
+      <div class="gt-titlebar">
+        <div class="gt-brand"><span class="gt-brand-mark"><i data-lucide="map-pin" aria-hidden="true"></i></span><span>GeoTag Studio</span></div>
+        <div class="gt-title-actions" aria-label="窗口操作">
+          <button class="gt-window-btn" type="button" aria-label="最小化"><i data-lucide="minus" aria-hidden="true"></i></button>
+          <button class="gt-window-btn" type="button" aria-label="最大化"><i data-lucide="square" aria-hidden="true"></i></button>
+          <button class="gt-window-btn" type="button" aria-label="关闭"><i data-lucide="x" aria-hidden="true"></i></button>
+        </div>
+      </div>
+
+      <div class="gt-app">
+        <!-- 左侧阶段导航已移除：导入、选点与写入在同一工作台完成。 -->
+        <nav class="gt-rail" aria-label="主导航" hidden>
+          <button class="gt-rail-btn is-active" type="button"><i data-lucide="folder-open" aria-hidden="true"></i><span>导入</span></button>
+          <button class="gt-rail-btn" type="button"><i data-lucide="map" aria-hidden="true"></i><span>标注</span></button>
+          <button class="gt-rail-btn" type="button"><i data-lucide="file-pen-line" aria-hidden="true"></i><span>写入</span></button>
+          <div class="gt-rail-spacer"></div>
+          <button class="gt-rail-btn" type="button"><i data-lucide="settings" aria-hidden="true"></i><span>设置</span></button>
+        </nav>
+
+        <div class="gt-content">
+          <header class="gt-header">
+            <div class="gt-project-title"><strong>2026 云南旅行</strong><small>新建项目 · 上次保存 10:42</small></div>
+            <div class="gt-header-actions"><span class="gt-status"><i class="gt-dot" aria-hidden="true"></i><span id="gt-status-text">待写入</span></span><button class="gt-icon-btn" type="button" aria-label="更多项目选项"><i data-lucide="more-horizontal" aria-hidden="true"></i></button></div>
+          </header>
+
+          <main class="gt-main">
+            <section class="gt-files" aria-label="待处理文件">
+              <div class="gt-files-head">
+                <div class="gt-section-title"><strong>待处理文件</strong><small id="gt-selected-count">已选 3 / 128</small></div>
+                <input id="gt-file-input" type="file" multiple accept=".jpg,.jpeg,.png,.heic,.tif,.tiff,.cr2,.cr3,.nef,.arw,.dng,.raf,.orf,.rw2,.pef,.srw,.mp4,.mov" hidden><button class="gt-import-btn" type="button" id="gt-import"><i data-lucide="plus" aria-hidden="true"></i><span>添加照片、RAW 或视频</span></button>
+              </div>
+              <div class="gt-filter-row"><span>按拍摄时间分组</span><select aria-label="文件分组方式"><option>自动分组</option><option>不分组</option><option>按文件夹</option></select></div>
+              <div class="gt-file-list" id="gt-file-list">
+                <button class="gt-file-row is-selected" type="button" data-selected="true"><input type="checkbox" checked aria-label="选择 IMG_4821.JPG"><span class="gt-thumb" aria-hidden="true"></span><span class="gt-file-text"><strong>IMG_4821.JPG</strong><small>2026/05/14 09:12 · 24.6 MB</small></span><span class="gt-file-kind">照片</span></button>
+                <button class="gt-file-row is-selected" type="button" data-selected="true"><input type="checkbox" checked aria-label="选择 IMG_4822.JPG"><span class="gt-thumb" aria-hidden="true"></span><span class="gt-file-text"><strong>IMG_4822.JPG</strong><small>2026/05/14 09:17 · 25.1 MB</small></span><span class="gt-file-kind">照片</span></button>
+                <button class="gt-file-row is-selected" type="button" data-selected="true"><input type="checkbox" checked aria-label="选择 DJI_0048.MP4"><span class="gt-thumb" aria-hidden="true"></span><span class="gt-file-text"><strong>DJI_0048.MP4</strong><small>2026/05/14 09:23 · 1.2 GB</small></span><span class="gt-file-kind">视频</span></button>
+                <button class="gt-file-row" type="button" data-selected="false"><input type="checkbox" aria-label="选择 IMG_4823.JPG"><span class="gt-thumb" aria-hidden="true"></span><span class="gt-file-text"><strong>IMG_4823.JPG</strong><small>2026/05/14 09:25 · 23.8 MB</small></span><span class="gt-file-kind">照片</span></button>
+                <button class="gt-file-row" type="button" data-selected="false"><input type="checkbox" aria-label="选择 IMG_4824.JPG"><span class="gt-thumb" aria-hidden="true"></span><span class="gt-file-text"><strong>IMG_4824.JPG</strong><small>2026/05/14 09:31 · 24.2 MB</small></span><span class="gt-file-kind">照片</span></button>
+              </div>
+              <div class="gt-files-foot"><span>照片 96 · RAW 18 · 视频 32</span><span>RAW 支持 EXIF GPS 写入</span></div>
+            </section>
+
+            <section class="gt-map-pane" aria-label="地图选点">
+              <div class="gt-map" id="gt-map" role="img" aria-label="云南旅行地图示意图，可点击地图选择位置">
+                <span class="gt-road r1" aria-hidden="true"></span><span class="gt-road r2" aria-hidden="true"></span><span class="gt-road r3" aria-hidden="true"></span><span class="gt-road r4" aria-hidden="true"></span>
+                <span class="gt-place p1">大理古城</span><span class="gt-place p2">洱海</span><span class="gt-place p3">苍山</span>
+                <button class="gt-marker" id="gt-marker" type="button" aria-label="已选位置，可拖动调整"></button>
+              </div>
+              <div class="gt-map-toolbar">
+                <label class="gt-map-search"><i data-lucide="search" aria-hidden="true"></i><input id="gt-search" type="text" placeholder="搜索地点、地址或经纬度" aria-label="搜索地点、地址或经纬度"></label>
+                <div class="gt-map-tools"><button class="gt-map-btn is-on" type="button" aria-label="地图图层"><i data-lucide="layers-3" aria-hidden="true"></i></button><button class="gt-map-btn" type="button" aria-label="定位到当前位置"><i data-lucide="locate-fixed" aria-hidden="true"></i></button><button class="gt-map-btn" type="button" aria-label="放大地图"><i data-lucide="plus" aria-hidden="true"></i></button><button class="gt-map-btn" type="button" aria-label="缩小地图"><i data-lucide="minus" aria-hidden="true"></i></button></div>
+              </div>
+              <div class="gt-legend"><i aria-hidden="true"></i><span>本次标注位置 · 点击地图可重新选点</span></div>
+               <div class="gt-crs-panel" aria-label="坐标系设置">
+                 <label><span>地图坐标系</span><select id="gt-crs-select"><option value="GCJ-02" selected>GCJ-02（中国大陆）</option><option value="WGS84">WGS84（海外/通用）</option><option value="BD-09">BD-09（百度地图）</option></select></label>
+                 <div class="gt-crs-help">地图显示坐标系与写入坐标系分离；写入 EXIF 时统一转换为 WGS84。</div>
+               </div>
+              <div class="gt-coordinate-card" aria-live="polite">
+                <div><strong>位置预览</strong><div class="gt-coord-values"><span id="gt-lat">纬度 25.6065° N</span><span id="gt-lon">经度 100.2676° E</span></div></div>
+                <div class="gt-coordinate-side"><span>地图显示 <b id="gt-map-crs">GCJ-02</b></span><span>写入 EXIF <b>WGS84</b></span></div>
+              </div>
+            </section>
+          </main>
+
+          <footer class="gt-footer">
+            <span class="gt-footer-note">选点后先应用到选中文件，再确认写入；照片写 EXIF，视频建议写 XMP sidecar。</span>
+            <div class="gt-footer-actions"><select id="gt-backup-policy" aria-label="备份策略"><option value="sibling">同目录创建 .bak</option><option value="copy">导出副本</option><option value="none">不创建备份</option></select><button class="gt-secondary-btn" type="button" id="gt-apply"><i data-lucide="check" aria-hidden="true"></i><span>应用到 3 个文件</span></button><button class="gt-secondary-btn" type="button" id="gt-preview"><i data-lucide="eye" aria-hidden="true"></i><span>预览变更</span></button><button class="gt-primary-btn" type="button" id="gt-write"><i data-lucide="file-check-2" aria-hidden="true"></i><span>写入 3 个文件</span></button></div>
+          </footer>
+        </div>
+      </div>
+      <div class="gt-toast" id="gt-toast" aria-live="polite">已更新位置</div>
+    </div>
+
+    <script>
+      (() => {
+        const root = document.getElementById("photo-gps-mockup");
+        const app = root.querySelector('[data-product="geotag"]');
+        const rows = [...app.querySelectorAll(".gt-file-row")];
+        const count = app.querySelector("#gt-selected-count");
+        const writeButton = app.querySelector("#gt-write");
+        const status = app.querySelector("#gt-status-text");
+        const toast = app.querySelector("#gt-toast");
+        const lat = app.querySelector("#gt-lat");
+        const lon = app.querySelector("#gt-lon");
+        const marker = app.querySelector("#gt-marker");
+        const map = app.querySelector("#gt-map");
+        const mapCrs = app.querySelector("#gt-map-crs");
+        const crsSelect = app.querySelector('#gt-crs-select');
+         const searchInput = app.querySelector('#gt-search');
+         const applyButton = app.querySelector('#gt-apply');
+         const backupPolicy = app.querySelector('#gt-backup-policy');
+         let pending = false;
+         let currentLat = 25.6065;
+         let currentLon = 100.2676;
+         let toastTimer;
+
+        function saveState() {
+          const selected = rows.filter((row) => row.dataset.selected === "true").map((row) => row.querySelector("strong").textContent);
+          window.openai?.setWidgetState?.({ modelContent: { selected }, privateContent: { selectedCount: selected.length } }).catch?.(() => {});
+        }
+        function updateCount() {
+          const selectedCount = rows.filter((row) => row.dataset.selected === "true").length;
+          count.textContent = `已选 ${selectedCount} / 128`;
+          writeButton.querySelector("span").textContent = `写入 ${selectedCount} 个文件`;
+           applyButton.querySelector("span").textContent = `应用到 ${selectedCount} 个文件`;
+          saveState();
+        }
+        function showToast(message) {
+          toast.textContent = message;
+          toast.classList.add("is-visible");
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 1800);
+        }
+        rows.forEach((row) => row.addEventListener("click", (event) => {
+          if (event.target.tagName === "INPUT") return;
+          const next = row.dataset.selected !== "true";
+          row.dataset.selected = String(next);
+          row.classList.toggle("is-selected", next);
+          row.querySelector("input").checked = next;
+          updateCount();
+        }));
+        const fileInput = app.querySelector('#gt-file-input');
+         app.querySelector('#gt-import').addEventListener('click', () => fileInput.click());
+         fileInput.addEventListener('change', () => { const files = [...fileInput.files]; if (!files.length) return; const raw = files.filter((file) => /\.(cr2|cr3|nef|arw|dng|raf|orf|rw2|pef|srw|tif|tiff)$/i.test(file.name)).length; showToast(`已导入 ${files.length} 个文件，其中 RAW ${raw} 个；可写入 EXIF GPS`); });
+        app.querySelector("#gt-preview").addEventListener("click", () => showToast("预览：坐标将转换为 WGS84 后写入照片 EXIF；视频生成 XMP sidecar"));
+        applyButton.addEventListener("click", () => { const n = rows.filter((row) => row.dataset.selected === "true").length; if (!n) return showToast("请先选择文件"); pending = true; rows.filter((row) => row.dataset.selected === "true").forEach((row) => row.dataset.pendingLocation = `${currentLat},${currentLon}`); status.textContent = "已应用位置 · 待写入"; showToast(`已应用到 ${n} 个文件`); });
+         writeButton.addEventListener("click", () => { status.textContent = "已写入"; showToast(backupPolicy.value === "none" ? "已写入 GPS 信息（未创建备份）" : "已写入 GPS 信息，原文件已保留备份"); });
+        map.addEventListener("click", (event) => {
+          if (event.target === marker) return;
+          const rect = map.getBoundingClientRect();
+          const x = Math.max(8, Math.min(92, ((event.clientX - rect.left) / rect.width) * 100));
+          const y = Math.max(12, Math.min(82, ((event.clientY - rect.top) / rect.height) * 100));
+          marker.style.left = `${x}%`;
+          marker.style.top = `${y}%`;
+          const nextLat = (25.52 + (82 - y) * .0063).toFixed(4);
+          const nextLon = (100.14 + x * .0022).toFixed(4);
+          lat.textContent = `纬度 ${nextLat}° N`;
+          currentLat = Number(nextLat); currentLon = Number(nextLon);
+           lon.textContent = `经度 ${nextLon}° E`;
+          showToast("已更新位置");
+        });
+        crsSelect.addEventListener("change", () => { mapCrs.textContent = crsSelect.value; showToast(`地图显示坐标系：${crsSelect.value}；写入仍为 WGS84`); });
+         searchInput.addEventListener("keydown", (event) => { if (event.key !== "Enter") return; const value = searchInput.value.trim(); const match = value.match(/^(-?\\d+(?:\\.\\d+)?)[,，\\s]+(-?\\d+(?:\\.\\d+)?)$/); if (match && Math.abs(Number(match[1])) <= 90 && Math.abs(Number(match[2])) <= 180) { currentLat = Number(match[1]); currentLon = Number(match[2]); lat.textContent = `纬度 ${currentLat.toFixed(4)}°`; lon.textContent = `经度 ${currentLon.toFixed(4)}°`; showToast("已定位到输入坐标"); } else { showToast("未找到地点，请输入‘纬度,经度’"); } });
+         app.querySelector(".gt-map-btn.is-on").addEventListener("click", () => {
+          const current = mapCrs.textContent;
+          mapCrs.textContent = current === "GCJ-02" ? "WGS84" : "GCJ-02";
+          showToast(`地图显示坐标系：${mapCrs.textContent}`);
+        });
+        updateCount();
+        if (globalThis.lucide) globalThis.lucide.createIcons({ attrs: { width: 16, height: 16, "stroke-width": 1.8 } });
+      })();
+    </script>
+  </section>
+
+  <section data-variant="向导流程" aria-label="向导流程方案" hidden>
+    <style>
+      #photo-gps-mockup [data-product="wizard"] {
+        --w-bg: light-dark(#f4f6f8, #15181c);
+        --w-window: light-dark(#ffffff, #1e2329);
+        --w-panel: light-dark(#f8fafb, #242a31);
+        --w-line: light-dark(#dbe2e8, #39424c);
+        --w-text: light-dark(#19222d, #edf2f7);
+        --w-muted: light-dark(#687786, #9eabb8);
+        --w-blue: light-dark(#1e6fe8, #67a4ff);
+        --w-blue-soft: light-dark(#e9f1ff, #203b60);
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+        color: var(--w-text);
+        background: var(--w-bg);
+        border: 1px solid var(--w-line);
+        border-radius: 18px;
+        overflow: hidden;
+        min-height: 650px;
+      }
+      #photo-gps-mockup .w-top { height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; background: var(--w-window); border-bottom: 1px solid var(--w-line); }
+      #photo-gps-mockup .w-brand { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 600; }
+      #photo-gps-mockup .w-brand-mark { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 6px; color: #fff; background: var(--w-blue); }
+      #photo-gps-mockup .w-save { color: var(--w-muted); font-size: 11px; }
+      #photo-gps-mockup .w-body { display: grid; grid-template-columns: 210px minmax(0, 1fr); min-height: 598px; }
+      #photo-gps-mockup .w-steps { padding: 30px 20px; background: var(--w-window); border-right: 1px solid var(--w-line); }
+      #photo-gps-mockup .w-step { position: relative; display: grid; grid-template-columns: 30px 1fr; gap: 10px; min-height: 72px; }
+      #photo-gps-mockup .w-step:not(:last-child)::after { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; width: 1px; background: var(--w-line); }
+      #photo-gps-mockup .w-step-num { position: relative; z-index: 1; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--w-line); color: var(--w-muted); background: var(--w-window); font-size: 12px; }
+      #photo-gps-mockup .w-step.is-done .w-step-num { color: #fff; background: var(--w-blue); border-color: var(--w-blue); }
+      #photo-gps-mockup .w-step.is-active .w-step-num { color: var(--w-blue); border: 2px solid var(--w-blue); }
+      #photo-gps-mockup .w-step-copy { display: grid; gap: 4px; align-content: start; padding-top: 2px; }
+      #photo-gps-mockup .w-step-copy strong { font-size: 12px; font-weight: 600; }
+      #photo-gps-mockup .w-step-copy small { color: var(--w-muted); font-size: 11px; line-height: 1.45; }
+      #photo-gps-mockup .w-stage { padding: 34px clamp(24px, 6vw, 76px); background: var(--w-bg); }
+      #photo-gps-mockup .w-stage-head { display: grid; gap: 8px; max-width: 620px; }
+      #photo-gps-mockup .w-stage-head h2 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+      #photo-gps-mockup .w-stage-head p { margin: 0; color: var(--w-muted); font-size: 13px; }
+      #photo-gps-mockup .w-card { margin-top: 26px; padding: 18px; background: var(--w-window); border: 1px solid var(--w-line); border-radius: 12px; max-width: 760px; }
+      #photo-gps-mockup .w-drop { display: grid; place-items: center; gap: 10px; min-height: 165px; border: 1px dashed #9ab1c8; border-radius: 10px; background: var(--w-panel); color: var(--w-muted); text-align: center; }
+      #photo-gps-mockup .w-drop strong { color: var(--w-text); font-size: 13px; font-weight: 600; }
+      #photo-gps-mockup .w-drop small { font-size: 11px; }
+      #photo-gps-mockup .w-file-summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--w-line); }
+      #photo-gps-mockup .w-file-summary strong { font-size: 13px; font-weight: 600; }
+      #photo-gps-mockup .w-file-summary small { color: var(--w-muted); font-size: 11px; }
+      #photo-gps-mockup .w-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 24px; max-width: 760px; }
+      #photo-gps-mockup .w-actions button { appearance: none; border-radius: 8px; padding: 10px 14px; font: inherit; font-size: 12px; cursor: pointer; }
+      #photo-gps-mockup .w-back { color: var(--w-muted); background: transparent; border: 1px solid var(--w-line); }
+      #photo-gps-mockup .w-next { color: #fff; background: var(--w-blue); border: 1px solid var(--w-blue); }
+      #photo-gps-mockup .w-note { display: inline-flex; align-items: center; gap: 6px; color: var(--w-muted); font-size: 11px; }
+      @media (max-width: 680px) {
+        #photo-gps-mockup .w-body { grid-template-columns: 1fr; }
+        #photo-gps-mockup .w-steps { display: flex; gap: 8px; padding: 16px; border-right: 0; border-bottom: 1px solid var(--w-line); overflow: auto; }
+        #photo-gps-mockup .w-step { min-width: 135px; min-height: auto; grid-template-columns: 28px 1fr; }
+        #photo-gps-mockup .w-step:not(:last-child)::after { display: none; }
+        #photo-gps-mockup .w-step-copy small { display: none; }
+      }
+    </style>
+    <div data-product="wizard">
+      <div class="w-top"><div class="w-brand"><span class="w-brand-mark"><i data-lucide="map-pin" aria-hidden="true"></i></span><span>GeoTag Studio · 新建项目</span></div><span class="w-save">本地处理 · 不上传原文件</span></div>
+      <div class="w-body">
+        <aside class="w-steps" aria-label="处理步骤">
+          <div class="w-step is-active"><span class="w-step-num">1</span><span class="w-step-copy"><strong>导入文件</strong><small>照片与视频可混合选择</small></span></div>
+          <div class="w-step"><span class="w-step-num">2</span><span class="w-step-copy"><strong>选择位置</strong><small>地图点选或输入坐标</small></span></div>
+          <div class="w-step"><span class="w-step-num">3</span><span class="w-step-copy"><strong>检查元数据</strong><small>确认写入格式与备份</small></span></div>
+          <div class="w-step"><span class="w-step-num">4</span><span class="w-step-copy"><strong>写入完成</strong><small>查看成功与失败清单</small></span></div>
+        </aside>
+        <main class="w-stage">
+          <div class="w-stage-head"><h2>先把要标注的文件放进来</h2><p>支持 JPG、HEIC、PNG、CR2、CR3、NEF、ARW、DNG、RAF、ORF、RW2、PEF、SRW、MP4、MOV。RAW 文件写入标准 EXIF GPS，不改变原始图像数据。</p></div>
+          <section class="w-card" aria-label="文件导入区">
+            <div class="w-drop"><i data-lucide="upload-cloud" aria-hidden="true"></i><strong>拖入文件或文件夹</strong><small>也可以点击选择 · 建议先整理同一地点的一组照片</small></div>
+            <div class="w-file-summary"><div><strong>尚未选择文件</strong><br><small>导入后会在左侧显示处理进度</small></div><button class="w-next" type="button" id="w-add">选择文件</button></div>
+          </section>
+          <div class="w-actions"><span class="w-note"><i data-lucide="shield-check" aria-hidden="true"></i>原文件默认保留，写入前可创建副本</span><button class="w-back" type="button">退出向导</button></div>
+        </main>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const app = document.querySelector('#photo-gps-mockup [data-product="wizard"]');
+        app.querySelector("#w-add").addEventListener("click", () => {
+          app.querySelector(".w-file-summary strong").textContent = "已选择 128 个文件";
+          app.querySelector(".w-file-summary small").textContent = "照片 96 · 视频 32 · 等待进入下一步";
+          app.querySelector("#w-add").textContent = "继续下一步";
+          app.querySelector(".w-step.is-active").classList.remove("is-active");
+          app.querySelectorAll(".w-step")[0].classList.add("is-done");
+          app.querySelectorAll(".w-step")[1].classList.add("is-active");
+        });
+        if (globalThis.lucide) globalThis.lucide.createIcons({ attrs: { width: 16, height: 16, "stroke-width": 1.8 } });
+      })();
+    </script>
+  </section>
+</div>

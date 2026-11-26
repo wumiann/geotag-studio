@@ -1,0 +1,26 @@
+{
+  "name": "photo-gps-manager",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GeoTag Studio: batch geotag photos, RAW files and videos on Windows",
+  "license": "GPL-3.0-only",
+  "repository": "github:wumiann/geotag-studio",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.5.0",
+    "@tauri-apps/plugin-dialog": "^2.8.0",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.5.0",
+    "@types/leaflet": "^1.9.22",
+    "picomatch": "^4.0.7",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}
